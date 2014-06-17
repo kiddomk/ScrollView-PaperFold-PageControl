@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SwipeView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UIScrollSlidingPages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2BAC36BCD6CE435983619505</key>
+		<key>1D4CFB2EE87245F6B6002EFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEEF6A99A1AF41AB81F29C49</key>
+		<key>2756B24F61204463B3B5D757</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DDE07B082BC64AFEA795950F</key>
+		<key>A2611112B4FD4019B4917E66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB95B27300FC437B80C8F891</key>
 		<dict>
 			<key>primary</key>
 			<true/>

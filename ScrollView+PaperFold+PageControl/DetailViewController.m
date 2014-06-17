@@ -15,6 +15,32 @@
 
 @implementation DetailViewController
 
+
+- (void)awakeFromNib
+{
+    //set up data
+    //your swipeView should always be driven by an array of
+    //data of some kind - don't store data in your item views
+    //or the recycling mechanism will destroy your data once
+    //your item views move off-screen
+    self.items = [[NSMutableArray alloc]initWithCapacity:12];
+    [self.items addObject:[UIImage imageNamed:@"Browser.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Calculator.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Calendar.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Chat.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Clock.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Graph.png"]];
+    [self.items addObject:[UIImage imageNamed:@"iPod.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Maps.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Notes.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Phone.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Settings.png"]];
+    [self.items addObject:[UIImage imageNamed:@"Weather.png"]];
+    
+}
+
+
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -38,20 +64,18 @@
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [self.detailItem description];
     }
-    //_paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0,64,[self.view bounds].size.width,[self.view bounds].size.height)];
-    [_paperFoldView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-    //[self.view addSubview:_paperFoldView];
-    [_paperFoldView setDelegate:self];
-    //[_paperFoldView setCenterContentView:_scrollView];
     
-    _topView = [[UIView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,300)];
+    
+    
+    _paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0,64,[self.view bounds].size.width,[self.view bounds].size.height)];
+    [_paperFoldView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [self.view addSubview:_paperFoldView];
+    [_paperFoldView setDelegate:self];
+    [_paperFoldView setCenterContentView:_scrollView];
+    
+    _topView = [[UIView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,80)];
     [_topView setBackgroundColor:[UIColor whiteColor]];
-    UILabel *topLabel = [[UILabel alloc] initWithFrame:_topView.frame];
-    [topLabel setText:@"A"];
-    [topLabel setBackgroundColor:[UIColor clearColor]];
-    [topLabel setFont:[UIFont boldSystemFontOfSize:300]];
-    [topLabel setTextAlignment:NSTextAlignmentCenter];
-    [_topView addSubview:topLabel];
+        [_topView addSubview:_swipeView];
     
     
     [_paperFoldView setTopFoldContentView:_topView topViewFoldCount:2 topViewPullFactor:0.9];
@@ -63,6 +87,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    _swipeView.pagingEnabled = YES;
+    _swipeView.alignment = SwipeViewAlignmentCenter;
+    _swipeView.itemsPerPage = 1;
+    _swipeView.truncateFinalPage = YES;
 }
 -(void)viewDidLayoutSubviews{
     //[_scrollView setContentSize:CGSizeMake(320, 500)];
@@ -73,6 +101,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark -
+#pragma mark iCarousel methods
+
+- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
+{
+    //return the total number of items in the carousel
+    return [_items count];
+}
+
+
+- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+
+    
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        
+    view = [[NSBundle mainBundle] loadNibNamed:@"ItemView" owner:self options:nil][0];
+
+    }
+    NSLog(@"index :%ld",(long)index);
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:view.bounds];
+    imageView.image=[self.items objectAtIndex:index];
+    imageView.contentMode=UIViewContentModeScaleAspectFit;
+    [view addSubview:imageView];
+    
+    return view;
+}
+
+
+
 
 #pragma mark - Split view
 

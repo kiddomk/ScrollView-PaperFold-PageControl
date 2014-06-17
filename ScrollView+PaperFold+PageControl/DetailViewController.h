@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PaperFoldView.h"
+#import "SwipeView.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate,PaperFoldViewDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate,PaperFoldViewDelegate,SwipeViewDataSource, SwipeViewDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
@@ -19,4 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+@property (nonatomic, strong) IBOutlet SwipeView *swipeView;
+@property (nonatomic, strong) NSMutableArray *items;
+
 @end

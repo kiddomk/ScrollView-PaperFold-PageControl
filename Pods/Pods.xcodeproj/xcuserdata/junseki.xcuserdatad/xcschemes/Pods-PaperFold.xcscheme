@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DDE07B082BC64AFEA795950F"
+               BlueprintIdentifier = "FB95B27300FC437B80C8F891"
                BuildableName = "libPods-PaperFold.a"
                BlueprintName = "Pods-PaperFold"
                ReferencedContainer = "container:Pods.xcodeproj">

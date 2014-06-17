@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_PaperFold 1
 #define COCOAPODS_VERSION_PATCH_PaperFold 0
 
+// SwipeView
+#define COCOAPODS_POD_AVAILABLE_SwipeView
+#define COCOAPODS_VERSION_MAJOR_SwipeView 1
+#define COCOAPODS_VERSION_MINOR_SwipeView 3
+#define COCOAPODS_VERSION_PATCH_SwipeView 2
+
 // UIScrollSlidingPages
 #define COCOAPODS_POD_AVAILABLE_UIScrollSlidingPages
 #define COCOAPODS_VERSION_MAJOR_UIScrollSlidingPages 1

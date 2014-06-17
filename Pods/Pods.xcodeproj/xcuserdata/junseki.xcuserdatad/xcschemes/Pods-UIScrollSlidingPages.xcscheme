@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2BAC36BCD6CE435983619505"
+               BlueprintIdentifier = "2756B24F61204463B3B5D757"
                BuildableName = "libPods-UIScrollSlidingPages.a"
                BlueprintName = "Pods-UIScrollSlidingPages"
                ReferencedContainer = "container:Pods.xcodeproj">
