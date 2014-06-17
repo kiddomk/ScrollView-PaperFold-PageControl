@@ -65,7 +65,10 @@
         self.detailDescriptionLabel.text = [self.detailItem description];
     }
     
-    
+    _swipeView.pagingEnabled = YES;
+    _swipeView.alignment = SwipeViewAlignmentCenter;
+    _swipeView.itemsPerPage = 1;
+    _swipeView.truncateFinalPage = YES;
     
     _paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0,64,[self.view bounds].size.width,[self.view bounds].size.height)];
     [_paperFoldView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
@@ -78,7 +81,7 @@
     [_topView addSubview:_swipeView];
     
     
-    [_paperFoldView setTopFoldContentView:_topView topViewFoldCount:2 topViewPullFactor:0.9];
+    [_paperFoldView setTopFoldContentView:_topView topViewFoldCount:1 topViewPullFactor:0.9];
     
 }
 
@@ -87,14 +90,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-    _swipeView.pagingEnabled = YES;
-    _swipeView.alignment = SwipeViewAlignmentCenter;
-    _swipeView.itemsPerPage = 1;
-    _swipeView.truncateFinalPage = YES;
+
 }
--(void)viewDidLayoutSubviews{
-    //[_scrollView setContentSize:CGSizeMake(320, 500)];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
