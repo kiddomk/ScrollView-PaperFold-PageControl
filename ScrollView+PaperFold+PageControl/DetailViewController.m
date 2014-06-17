@@ -134,8 +134,9 @@
 }
 
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index{
-//    self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%ld",(long)index];
-//    NSLog(@"swipe view index%ld",(long)swipeView.currentItemIndex);
+ NSLog(@"scrollToItemAtIndex :%ld",(long)index);
+    [swipeView scrollToItemAtIndex:index duration:0.3];
+    self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%ld",(long)index];
 }
 
 
