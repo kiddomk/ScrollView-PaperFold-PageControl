@@ -75,7 +75,7 @@
     
     _topView = [[UIView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,80)];
     [_topView setBackgroundColor:[UIColor whiteColor]];
-        [_topView addSubview:_swipeView];
+    [_topView addSubview:_swipeView];
     
     
     [_paperFoldView setTopFoldContentView:_topView topViewFoldCount:2 topViewPullFactor:0.9];
@@ -127,11 +127,18 @@
     imageView.image=[self.items objectAtIndex:index];
     imageView.contentMode=UIViewContentModeScaleAspectFit;
     [view addSubview:imageView];
-    
+
     return view;
 }
 
+- (void)swipeViewDidEndDecelerating:(SwipeView *)swipeView{
+    self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%ld",(long)swipeView.currentItemIndex];
+}
 
+- (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index{
+//    self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%ld",(long)index];
+//    NSLog(@"swipe view index%ld",(long)swipeView.currentItemIndex);
+}
 
 
 #pragma mark - Split view
